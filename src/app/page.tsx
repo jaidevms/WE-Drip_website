@@ -3,6 +3,11 @@ import { Problem } from "@/components/sections/Problem";
 import { WhatWeHandle } from "@/components/sections/WhatWeHandle";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { Packages } from "@/components/sections/Packages";
+import { ProfitCalculator } from "@/components/sections/ProfitCalculator";
+import { FinePrint } from "@/components/sections/FinePrint";
+import { StyleDirection } from "@/components/sections/StyleDirection";
+import { FAQ } from "@/components/sections/FAQ";
+import { FinalCta } from "@/components/sections/FinalCta";
 
 export default function Home() {
   return (
@@ -12,11 +17,11 @@ export default function Home() {
       <WhatWeHandle />
       <HowItWorks />
       <Packages />
-      <div className="flex min-h-screen items-center justify-center border-t border-brand-gray-line bg-brand-off-white">
-        <p className="font-sans text-2xl font-bold uppercase tracking-tight-display text-brand-black">
-          Sections coming
-        </p>
-      </div>
+      <ProfitCalculator />
+      <FinePrint />
+      <StyleDirection />
+      <FAQ />
+      <FinalCta />
     </main>
   );
 }
