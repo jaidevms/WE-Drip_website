@@ -3,7 +3,10 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { ArrowRight, Menu, X } from "lucide-react";
+import { useGSAP } from "@gsap/react";
 import { cn } from "@/lib/utils";
+import { ScrollTrigger } from "@/lib/gsap";
+import { Magnetic } from "@/components/Magnetic";
 
 const NAV_LINKS = [
   { href: "#home", label: "Home" },
@@ -30,12 +33,27 @@ function Wordmark({ light = false }: { light?: boolean }) {
 export function StickyNav() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [activeHref, setActiveHref] = useState("#home");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 80);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useGSAP(() => {
+    const triggers = NAV_LINKS.map(({ href }) => {
+      const section = document.querySelector(href);
+      if (!section) return null;
+      return ScrollTrigger.create({
+        trigger: section,
+        start: "top center",
+        end: "bottom center",
+        onToggle: (self) => self.isActive && setActiveHref(href),
+      });
+    });
+    return () => triggers.forEach((t) => t?.kill());
   }, []);
 
   useEffect(() => {
@@ -64,7 +82,12 @@ export function StickyNav() {
             <Link
               key={link.href}
               href={link.href}
-              className="relative text-sm font-medium uppercase tracking-wide text-brand-black/70 transition-colors after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-brand-yellow after:transition-all after:duration-300 hover:text-brand-black hover:after:w-full"
+              className={cn(
+                "relative text-sm font-medium uppercase tracking-wide text-brand-black/70 transition-colors after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:bg-brand-yellow after:transition-all after:duration-300 hover:text-brand-black hover:after:w-full",
+                activeHref === link.href
+                  ? "text-brand-black after:w-full"
+                  : "after:w-0"
+              )}
             >
               {link.label}
             </Link>
@@ -72,13 +95,15 @@ export function StickyNav() {
         </nav>
 
         <div className="flex items-center">
-          <Link
-            href="/apply"
-            className="hidden items-center gap-2 rounded-[4px] border border-brand-black bg-white px-6 py-3 text-sm font-bold uppercase tracking-wide text-brand-black transition-colors hover:bg-brand-yellow md:inline-flex"
-          >
-            Apply Now
-            <ArrowRight className="h-4 w-4" />
-          </Link>
+          <Magnetic>
+            <Link
+              href="/apply"
+              className="hidden items-center gap-2 rounded-[4px] border border-brand-black bg-white px-6 py-3 text-sm font-bold uppercase tracking-wide text-brand-black transition-colors hover:bg-brand-yellow md:inline-flex"
+            >
+              Apply Now
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </Magnetic>
 
           <button
             type="button"

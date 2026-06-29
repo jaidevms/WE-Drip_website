@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowRight, MessageCircle, AtSign, Mail } from "lucide-react";
+import { Magnetic } from "@/components/Magnetic";
 
 const WHATSAPP_URL =
   "https://wa.me/917550022162?text=Hi%20WeDrip%2C%20I'm%20interested.";
@@ -21,13 +22,15 @@ export function FinalCta() {
         <p className="mx-auto mt-6 max-w-[480px] text-base text-white/70 md:text-lg">
           Apply now or message us directly. We reply within 24 hours.
         </p>
-        <Link
-          href="/apply"
-          className="mt-10 inline-flex items-center gap-3 rounded-[4px] bg-white px-12 py-6 text-lg font-bold uppercase tracking-wide text-brand-black transition-colors hover:bg-brand-yellow"
-        >
-          Apply Now
-          <ArrowRight className="h-5 w-5" />
-        </Link>
+        <Magnetic>
+          <Link
+            href="/apply"
+            className="mt-10 inline-flex items-center gap-3 rounded-[4px] bg-white px-12 py-6 text-lg font-bold uppercase tracking-wide text-brand-black transition-colors hover:bg-brand-yellow"
+          >
+            Apply Now
+            <ArrowRight className="h-5 w-5" />
+          </Link>
+        </Magnetic>
       </div>
 
       <div className="border-t border-white/10 px-6 py-20">

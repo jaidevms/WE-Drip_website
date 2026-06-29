@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { DotPattern } from "@/components/ui/dot-pattern";
 import { Marquee } from "@/components/ui/marquee";
+import { Magnetic } from "@/components/Magnetic";
 
 const MARQUEE_TEXT = "MERCH FOR CREATORS · INDIA ·";
 
@@ -31,19 +32,23 @@ export function Hero() {
         </p>
 
         <div className="mt-10 flex w-full flex-col items-center gap-4 sm:w-auto sm:flex-row">
-          <Link
-            href="/apply"
-            className="flex w-full items-center justify-center gap-2 rounded-[4px] bg-brand-black px-8 py-4 text-base font-bold uppercase tracking-wide text-white transition-colors hover:bg-brand-yellow hover:text-brand-black sm:w-auto"
-          >
-            Apply Now
-            <ArrowRight className="h-4 w-4" />
-          </Link>
-          <Link
-            href="#packages"
-            className="flex w-full items-center justify-center rounded-[4px] border border-brand-black bg-transparent px-8 py-4 text-base font-bold uppercase tracking-wide text-brand-black transition-colors hover:bg-brand-black hover:text-white sm:w-auto"
-          >
-            See Packages
-          </Link>
+          <Magnetic>
+            <Link
+              href="/apply"
+              className="flex w-full items-center justify-center gap-2 rounded-[4px] bg-brand-black px-8 py-4 text-base font-bold uppercase tracking-wide text-white transition-colors hover:bg-brand-yellow hover:text-brand-black sm:w-auto"
+            >
+              Apply Now
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </Magnetic>
+          <Magnetic>
+            <Link
+              href="#packages"
+              className="flex w-full items-center justify-center rounded-[4px] border border-brand-black bg-transparent px-8 py-4 text-base font-bold uppercase tracking-wide text-brand-black transition-colors hover:bg-brand-black hover:text-white sm:w-auto"
+            >
+              See Packages
+            </Link>
+          </Magnetic>
         </div>
       </div>
 

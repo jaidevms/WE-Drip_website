@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Magnetic } from "@/components/Magnetic";
 
 type Package = {
   tag: string;
@@ -136,18 +137,20 @@ export function Packages() {
                 ))}
               </ul>
 
-              <Link
-                href={pkg.ctaHref}
-                className={cn(
-                  "mt-8 flex items-center justify-center gap-2 rounded-[4px] px-6 py-4 text-sm font-bold uppercase tracking-wide transition-colors",
-                  pkg.highlighted
-                    ? "bg-brand-yellow text-brand-black hover:bg-brand-black hover:text-white"
-                    : "bg-brand-black text-white hover:bg-brand-yellow hover:text-brand-black"
-                )}
-              >
-                {pkg.ctaLabel}
-                <ArrowRight className="h-4 w-4" />
-              </Link>
+              <Magnetic>
+                <Link
+                  href={pkg.ctaHref}
+                  className={cn(
+                    "mt-8 flex items-center justify-center gap-2 rounded-[4px] px-6 py-4 text-sm font-bold uppercase tracking-wide transition-colors",
+                    pkg.highlighted
+                      ? "bg-brand-yellow text-brand-black hover:bg-brand-black hover:text-white"
+                      : "bg-brand-black text-white hover:bg-brand-yellow hover:text-brand-black"
+                  )}
+                >
+                  {pkg.ctaLabel}
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </Magnetic>
             </div>
           ))}
         </div>

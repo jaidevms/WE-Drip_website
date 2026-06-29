@@ -172,3 +172,12 @@
 .animate-whatsapp-pulse {
   animation: whatsapp-pulse 2s ease-in-out infinite;
 }
+
+html[data-skip-intro="1"] .page-entry-curtain {
+  display: none;
+}
+
+html.wd-cursor-active,
+html.wd-cursor-active * {
+  cursor: none;
+}
