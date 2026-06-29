@@ -37,7 +37,7 @@ export function StyleDirection() {
                 key={concept.number}
                 className="flex w-[260px] flex-col gap-3 md:w-[320px]"
               >
-                <div className="flex aspect-[4/5] flex-col items-center justify-center gap-4 border border-brand-gray-line bg-neutral-200 transition-transform hover:scale-[1.03]">
+                <div className="flex aspect-[4/5] flex-col items-center justify-center gap-4 border border-brand-gray-line bg-neutral-200 transition-transform hover:scale-[1.05]">
                   <Icon
                     className="h-10 w-10 text-neutral-500"
                     strokeWidth={1.5}

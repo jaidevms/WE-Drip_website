@@ -1,11 +1,19 @@
+"use client";
+
+import { useRef } from "react";
 import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Magnetic } from "@/components/Magnetic";
+import { useGSAP } from "@gsap/react";
+import { gsap } from "@/lib/gsap";
+import { NumberTicker } from "@/components/ui/number-ticker";
+import { ShineBorder } from "@/components/ui/shine-border";
 
 type Package = {
   tag: string;
   priceMain: string;
+  priceTicker?: number;
   priceSuffix?: string;
   subPrice: string;
   description: string;
@@ -34,6 +42,7 @@ const PACKAGES: Package[] = [
   {
     tag: "FULL HANDOVER",
     priceMain: "₹25,000",
+    priceTicker: 25000,
     subPrice: "one-time fee · run it yourself after launch",
     description:
       "Full custom designs, full store, full POD integration. We hand you the keys.",
@@ -50,6 +59,7 @@ const PACKAGES: Package[] = [
   {
     tag: "WE RUN IT ALL",
     priceMain: "₹30,000",
+    priceTicker: 30000,
     priceSuffix: "+ 20% profit",
     subPrice: "one-time fee · 20% of profit, monthly, for 12 months",
     description:
@@ -68,6 +78,28 @@ const PACKAGES: Package[] = [
 ];
 
 export function Packages() {
+  const gridRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(
+    () => {
+      if (!gridRef.current) return;
+      const cards = gridRef.current.querySelectorAll("[data-package-card]");
+      gsap.from(cards, {
+        opacity: 0,
+        y: 32,
+        duration: 0.6,
+        stagger: 0.12,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: gridRef.current,
+          start: "top 80%",
+          toggleActions: "play none none none",
+        },
+      });
+    },
+    { scope: gridRef }
+  );
+
   return (
     <section id="packages" className="bg-brand-off-white px-6 py-16 md:py-[120px]">
       <div className="mx-auto max-w-7xl">
@@ -84,10 +116,14 @@ export function Packages() {
           </p>
         </div>
 
-        <div className="mt-16 grid grid-cols-1 gap-6 lg:grid-cols-3 lg:items-stretch">
+        <div
+          ref={gridRef}
+          className="mt-16 grid grid-cols-1 gap-6 lg:grid-cols-3 lg:items-stretch"
+        >
           {PACKAGES.map((pkg) => (
             <div
               key={pkg.tag}
+              data-package-card
               className={cn(
                 "relative flex h-full flex-col p-8 transition-transform duration-300 hover:scale-[1.02]",
                 pkg.highlighted
@@ -95,6 +131,7 @@ export function Packages() {
                   : "border border-brand-gray-line"
               )}
             >
+              {pkg.highlighted && <ShineBorder shineColor={["#fed400", "#ffffff"]} />}
               {pkg.highlighted && (
                 <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-[4px] bg-brand-yellow px-3 py-1 text-xs font-bold uppercase tracking-wide text-brand-black">
                   Most Popular
@@ -106,9 +143,19 @@ export function Packages() {
               </span>
 
               <div className="mt-8 flex items-baseline gap-2">
-                <span className="text-[40px] font-bold leading-none text-brand-black">
-                  {pkg.priceMain}
-                </span>
+                {pkg.priceTicker !== undefined ? (
+                  <span className="text-[40px] font-bold leading-none text-brand-black">
+                    ₹
+                    <NumberTicker
+                      value={pkg.priceTicker}
+                      className="text-[40px] font-bold leading-none text-brand-black"
+                    />
+                  </span>
+                ) : (
+                  <span className="text-[40px] font-bold leading-none text-brand-black">
+                    {pkg.priceMain}
+                  </span>
+                )}
                 {pkg.priceSuffix && (
                   <span className="font-mono text-lg text-brand-gray-text">
                     {pkg.priceSuffix}

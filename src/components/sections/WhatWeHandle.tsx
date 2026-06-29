@@ -1,3 +1,6 @@
+"use client";
+
+import { useRef, useState } from "react";
 import {
   Paintbrush,
   ShoppingBag,
@@ -7,6 +10,9 @@ import {
   MessageCircle,
   type LucideIcon,
 } from "lucide-react";
+import { useGSAP } from "@gsap/react";
+import { gsap } from "@/lib/gsap";
+import { BorderBeam } from "@/components/ui/border-beam";
 
 type Pillar = {
   number: string;
@@ -59,6 +65,29 @@ const PILLARS: Pillar[] = [
 ];
 
 export function WhatWeHandle() {
+  const gridRef = useRef<HTMLDivElement>(null);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
+  useGSAP(
+    () => {
+      if (!gridRef.current) return;
+      const cards = gridRef.current.querySelectorAll("[data-card]");
+      gsap.from(cards, {
+        opacity: 0,
+        y: 32,
+        duration: 0.6,
+        stagger: 0.06,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: gridRef.current,
+          start: "top 80%",
+          toggleActions: "play none none none",
+        },
+      });
+    },
+    { scope: gridRef }
+  );
+
   return (
     <section
       id="what-we-handle"
@@ -76,14 +105,29 @@ export function WhatWeHandle() {
           Everything between the idea and the sale.
         </h2>
 
-        <div className="mt-12 grid grid-cols-1 gap-6 md:mt-[60px] md:grid-cols-2 lg:grid-cols-3">
-          {PILLARS.map((pillar) => {
+        <div
+          ref={gridRef}
+          className="mt-12 grid grid-cols-1 gap-6 md:mt-[60px] md:grid-cols-2 lg:grid-cols-3"
+        >
+          {PILLARS.map((pillar, index) => {
             const Icon = pillar.icon;
             return (
               <div
                 key={pillar.number}
-                className="group flex min-h-[240px] flex-col border border-brand-gray-line p-8 transition-colors hover:border-brand-black"
+                data-card
+                onMouseEnter={() => setHoveredIndex(index)}
+                onMouseLeave={() => setHoveredIndex(null)}
+                className="group relative flex min-h-[240px] flex-col border border-brand-gray-line p-8 transition-colors hover:border-brand-black"
               >
+                {hoveredIndex === index && (
+                  <BorderBeam
+                    duration={4}
+                    size={120}
+                    colorFrom="#fed400"
+                    colorTo="#0a0a0a"
+                  />
+                )}
+
                 <div className="flex items-center justify-between">
                   <Icon className="h-6 w-6 text-brand-black" strokeWidth={1.5} />
                   <span className="font-mono text-xs text-brand-gray-text">

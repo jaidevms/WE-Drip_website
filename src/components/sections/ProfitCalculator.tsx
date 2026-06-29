@@ -3,13 +3,8 @@
 import { useState } from "react";
 import { Slider } from "@/components/ui/slider";
 import { Input } from "@/components/ui/input";
-
-const formatINR = (value: number) =>
-  new Intl.NumberFormat("en-IN", {
-    style: "currency",
-    currency: "INR",
-    maximumFractionDigits: 0,
-  }).format(value);
+import { NumberTicker } from "@/components/ui/number-ticker";
+import { BlurFade } from "@/components/ui/blur-fade";
 
 const sliderClassName =
   "[&_[data-slot=slider-track]]:bg-white/10 [&_[data-slot=slider-range]]:bg-brand-yellow [&_[data-slot=slider-thumb]]:size-4 [&_[data-slot=slider-thumb]]:border-brand-yellow [&_[data-slot=slider-thumb]]:bg-white";
@@ -43,7 +38,10 @@ export function ProfitCalculator() {
         </p>
       </div>
 
-      <div className="mx-auto mt-16 grid max-w-5xl gap-12 lg:grid-cols-2 lg:gap-16">
+      <BlurFade
+        inView
+        className="mx-auto mt-16 grid max-w-5xl gap-12 lg:grid-cols-2 lg:gap-16"
+      >
         {/* Controls */}
         <div className="space-y-10">
           <div>
@@ -113,7 +111,7 @@ export function ProfitCalculator() {
             Your monthly profit
           </p>
           <p className="mt-2 text-[44px] font-bold leading-none text-white md:text-[64px]">
-            {formatINR(monthlyProfit)}
+            ₹<NumberTicker value={monthlyProfit} className="text-[44px] font-bold leading-none text-white md:text-[64px]" />
           </p>
 
           <div className="my-8 h-px bg-white/10" />
@@ -124,7 +122,7 @@ export function ProfitCalculator() {
                 WeDrip&apos;s share (20%)
               </p>
               <p className="mt-2 text-2xl font-bold text-brand-yellow md:text-3xl">
-                {formatINR(ourShare)}
+                ₹<NumberTicker value={ourShare} className="text-2xl font-bold text-brand-yellow md:text-3xl" />
               </p>
             </div>
             <div>
@@ -132,19 +130,19 @@ export function ProfitCalculator() {
                 Annual profit (your share)
               </p>
               <p className="mt-2 text-2xl font-bold text-white md:text-3xl">
-                {formatINR(annualYour)}
+                ₹<NumberTicker value={annualYour} className="text-2xl font-bold text-white md:text-3xl" />
               </p>
             </div>
           </div>
 
           <div className="mt-8 border-t border-brand-yellow pt-4">
             <p className="font-mono text-xs uppercase tracking-wide text-white/50">
-              Year 1 total — you keep {formatINR(annualYour)} · we take{" "}
-              {formatINR(annualOurs)}
+              Year 1 total — you keep ₹<NumberTicker value={annualYour} className="text-white/50" /> · we
+              take ₹<NumberTicker value={annualOurs} className="text-white/50" />
             </p>
           </div>
         </div>
-      </div>
+      </BlurFade>
     </section>
   );
 }

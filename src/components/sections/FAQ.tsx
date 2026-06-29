@@ -4,6 +4,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { BlurFade } from "@/components/ui/blur-fade";
 
 const FAQS = [
   {
@@ -56,18 +57,19 @@ export function FAQ() {
 
         <Accordion type="single" collapsible defaultValue="item-0" className="mt-12">
           {FAQS.map((faq, index) => (
-            <AccordionItem
-              key={faq.question}
-              value={`item-${index}`}
-              className="border-brand-gray-line"
-            >
-              <AccordionTrigger className="py-6 text-base font-bold uppercase tracking-tight-display text-brand-black hover:no-underline md:text-lg">
-                {faq.question}
-              </AccordionTrigger>
-              <AccordionContent className="pb-6 text-base leading-relaxed text-brand-gray-text">
-                {faq.answer}
-              </AccordionContent>
-            </AccordionItem>
+            <BlurFade key={faq.question} delay={index * 0.06} inView>
+              <AccordionItem
+                value={`item-${index}`}
+                className="border-brand-gray-line"
+              >
+                <AccordionTrigger className="py-6 text-base font-bold uppercase tracking-tight-display text-brand-black hover:no-underline md:text-lg">
+                  {faq.question}
+                </AccordionTrigger>
+                <AccordionContent className="pb-6 text-base leading-relaxed text-brand-gray-text">
+                  {faq.answer}
+                </AccordionContent>
+              </AccordionItem>
+            </BlurFade>
           ))}
         </Accordion>
       </div>

@@ -16,6 +16,7 @@ export function PageEntry() {
       yPercent: -100,
       duration: 0.6,
       ease: "power2.out",
+      onComplete: () => window.dispatchEvent(new Event("wd:intro-complete")),
     });
   }, []);
 
