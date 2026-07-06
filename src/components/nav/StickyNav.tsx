@@ -23,7 +23,7 @@ function Wordmark({ light = false }: { light?: boolean }) {
       )}
     >
       WeDrip
-      <span aria-hidden="true" className="ml-0.5 text-2xl leading-none text-brand-yellow">
+      <span aria-hidden="true" className="ml-0.5 text-2xl leading-none text-brand-yellow relative -top-[3px]">
         &bull;
       </span>
     </span>
@@ -77,7 +77,7 @@ export function StickyNav() {
           <Wordmark />
         </Link>
 
-        <nav className="hidden items-center gap-10 md:flex">
+        <nav className="hidden items-center gap-6 md:flex lg:gap-10">
           {NAV_LINKS.map((link) => (
             <Link
               key={link.href}

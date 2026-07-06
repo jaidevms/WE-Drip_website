@@ -173,10 +173,10 @@ export function HowItWorks() {
       id="how-it-works"
       className="relative z-10 bg-brand-black px-6 py-24 md:py-40"
     >
-      <div className="mx-auto max-w-7xl lg:grid lg:h-[70vh] lg:grid-cols-[35%_65%] lg:gap-16">
+      <div className="mx-auto max-w-7xl lg:grid lg:min-h-[70vh] lg:grid-cols-[35%_65%] lg:gap-16">
         {/* Left column — Problem narrative */}
-        <div ref={leftColRef} className="hidden lg:flex lg:flex-col lg:justify-center">
-          <p className="max-w-[420px] font-sans text-[40px] font-bold uppercase leading-[1.3] tracking-tight-display text-white xl:text-[52px]">
+        <div ref={leftColRef} className="flex flex-col justify-center mb-16 lg:mb-0 lg:flex">
+          <p className="max-w-[420px] font-sans text-[30px] font-bold uppercase leading-[1.2] tracking-tight-display text-white sm:text-[32px] lg:text-[30px] xl:text-[42px] 2xl:text-[52px]">
             {STORY_LINES.map((line, i) => (
               <span
                 key={i}
@@ -204,6 +204,7 @@ export function HowItWorks() {
                 key={step.number}
                 className={cn(
                   "absolute top-1/2 w-full -translate-y-1/2 pr-12 transition-all duration-700 ease-out",
+                  index === 3 && "-mt-[3px]",
                   index === activeStepIndex
                     ? "pointer-events-auto translate-x-0 scale-100 opacity-100 blur-none"
                     : "pointer-events-none translate-x-12 scale-[0.96] opacity-0 blur-sm"
@@ -228,8 +229,9 @@ export function HowItWorks() {
 
           {/* Mobile layout requires normal document flow */}
           <div className="space-y-24 lg:hidden">
-            {STEPS.map((step) => (
-              <div key={`mobile-${step.number}`} data-step-card>
+            {STEPS.map((step, index) => (
+              <div key={`mobile-${step.number}`} data-step-card className={index === 3 ? "-mt-[3px]" : ""}>
+
                 <div className="mb-6">
                   <div className="mb-4 h-[2px] w-16 bg-brand-yellow" />
                   <div className="flex items-baseline font-sans font-bold tracking-tight-display">

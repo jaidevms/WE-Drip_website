@@ -107,7 +107,11 @@ export function HeroCategoryCarousel() {
             {visibleItems.map(({ label, src, tilt }, index) => (
               <div
                 key={`${label}-${index}`}
-                className="flex min-h-[142px] items-center justify-center"
+                className={cn(
+                  "flex min-h-[142px] items-center justify-center",
+                  index === 3 && "block sm:hidden lg:block",
+                  index === 4 && "hidden lg:block"
+                )}
               >
                 <img
                   src={src}

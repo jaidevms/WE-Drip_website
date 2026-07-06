@@ -18,7 +18,7 @@ export function FinalCta() {
   return (
     <section className="bg-brand-black">
       <div className="px-6 pb-24 pt-32 text-center md:pb-32 md:pt-40">
-        <h2 className="text-[64px] font-bold uppercase leading-[0.95] tracking-tight-display md:text-[120px]">
+        <h2 className="text-[48px] font-bold uppercase leading-[0.95] tracking-tight-display min-[460px]:text-[64px] md:text-[100px] lg:text-[120px]">
           <AnimatedShinyText className="mx-0 max-w-none text-brand-yellow via-white/90">
             Ready to drip?
           </AnimatedShinyText>
@@ -45,7 +45,7 @@ export function FinalCta() {
                 WeDrip
                 <span
                   aria-hidden="true"
-                  className="ml-1 text-2xl leading-none text-brand-yellow"
+                  className="ml-1 text-2xl leading-none text-brand-yellow relative -top-[3px]"
                 >
                   &bull;
                 </span>
