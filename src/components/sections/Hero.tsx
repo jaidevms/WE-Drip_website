@@ -80,7 +80,7 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative flex min-h-screen flex-col overflow-hidden bg-brand-off-white"
+      className="relative flex flex-col overflow-hidden bg-brand-off-white"
     >
       <DotPattern
         className="text-brand-yellow opacity-[0.04]"
@@ -88,12 +88,11 @@ export function Hero() {
         height={20}
       />
 
-      <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-6 pb-8 pt-16 text-center">
-        <div ref={barRef} className="mb-6 h-1 w-20 bg-brand-yellow" />
+<div className="relative z-10 flex flex-col items-center px-6 pb-2 pt-12 text-center md:pb-2 md:pt-12 lg:pt-14">        <div ref={barRef} className="mb-6 h-1 w-20 bg-brand-yellow" />
 
         <h1
           ref={headlineRef}
-          className="max-w-[1600px] font-sans text-[36px] font-bold uppercase leading-[0.95] tracking-tight-display text-brand-black min-[460px]:text-[44px] min-[840px]:text-[64px] lg:text-[80px] xl:text-[96px]"
+          className="max-w-[1600px] font-sans text-[34px] font-bold uppercase leading-[0.95] tracking-tight-display text-brand-black min-[460px]:text-[42px] min-[840px]:text-[60px] lg:text-[74px] xl:text-[88px]"
         >
           <span className="block">YOU BUILT THE AUDIENCE.</span>
           <span className="block">WE&apos;LL BUILD THE BRAND.</span>
@@ -101,7 +100,7 @@ export function Hero() {
 
         <p
           ref={sublineRef}
-          className="mt-8 max-w-[560px] text-base leading-relaxed text-brand-gray-text md:text-lg"
+          className="mt-4 max-w-[560px] text-base leading-relaxed text-brand-gray-text md:text-lg"
         >
           India&apos;s merch agency for creators. We design it, build the
           store, handle production. You just show up.
@@ -109,7 +108,7 @@ export function Hero() {
 
         <div
           ref={ctaRowRef}
-          className="mt-10 flex w-full flex-col items-center gap-4 sm:w-auto sm:flex-row"
+          className="mt-5 flex w-full flex-col items-center gap-4 sm:w-auto sm:flex-row"
         >
           <Magnetic>
             <Link
@@ -130,7 +129,9 @@ export function Hero() {
           </Magnetic>
         </div>
 
-        <HeroCategoryCarousel />
+        <div className="-mt-6 w-full">
+    <HeroCategoryCarousel />
+</div>
       </div>
 
       <Marquee

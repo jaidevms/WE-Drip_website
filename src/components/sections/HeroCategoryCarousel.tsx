@@ -93,7 +93,7 @@ export function HeroCategoryCarousel() {
   };
 
   return (
-    <div className="mt-10 w-full max-w-6xl overflow-hidden border-y border-brand-black/10 bg-[#ddc3f2] text-left shadow-[0_18px_45px_rgba(10,10,10,0.08)] md:mt-12">
+    <div className="mt-8 w-full max-w-5xl overflow-hidden border-y border-brand-black/10 bg-[#ddc3f2] text-left shadow-[0_18px_45px_rgba(10,10,10,0.08)] md:mt-12">
       <div className="relative grid min-h-[230px] md:grid-cols-[1fr_320px]">
         <div
           className="absolute left-0 top-0 h-8 w-full bg-brand-off-white"
@@ -117,7 +117,7 @@ export function HeroCategoryCarousel() {
                   src={src}
                   alt={label}
                   className={cn(
-                    "hero-carousel-pop h-24 w-24 object-contain drop-shadow-[6px_8px_0_rgba(10,10,10,0.16)] transition-transform duration-500 sm:h-28 sm:w-28",
+                    "hero-carousel-pop h-20 w-20 object-contain drop-shadow-[6px_8px_0_rgba(10,10,10,0.16)] transition-transform duration-500 sm:h-24 sm:w-24",
                     tilt
                   )}
                   style={{ animationDelay: `${index * 110}ms` }}
