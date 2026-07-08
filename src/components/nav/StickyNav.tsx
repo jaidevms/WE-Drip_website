@@ -136,7 +136,12 @@ export function StickyNav() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
-                className="text-4xl font-bold uppercase tracking-tight-display text-white/90 transition-colors hover:text-brand-yellow"
+                className={cn(
+                  "text-4xl font-bold uppercase tracking-tight-display transition-colors",
+                  activeHref === link.href
+                    ? "text-brand-yellow"
+                    : "text-white/90 hover:text-brand-yellow"
+                )}
               >
                 {link.label}
               </Link>
