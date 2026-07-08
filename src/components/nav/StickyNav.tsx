@@ -12,7 +12,7 @@ const NAV_LINKS = [
   { href: "#home", label: "Home" },
   { href: "#how-it-works", label: "How it works" },
   { href: "#packages", label: "Packages" },
-  { href: "#faq", label: "FAQ" },
+  { href: "/#faq", label: "FAQ" },
 ];
 
 function Wordmark({ light = false }: { light?: boolean }) {
@@ -45,7 +45,9 @@ export function StickyNav() {
 
   useGSAP(() => {
     const triggers = NAV_LINKS.map(({ href }) => {
-      const section = document.querySelector(href);
+      const sectionSelector = href.startsWith("/#") ? href.slice(1) : href;
+      if (!sectionSelector.startsWith("#")) return null;
+      const section = document.querySelector(sectionSelector);
       if (!section) return null;
       return ScrollTrigger.create({
         trigger: section,
