@@ -27,7 +27,7 @@ export function StyleDirection() {
           This is the kind of work we make.
         </h2>
         <p className="mt-4 text-base text-brand-gray-text md:text-lg">
-          Yours will be yours alone â€” these are concepts to show our range.
+          Yours will be yours alone these are concepts to show our range.
         </p>
       </div>
 
@@ -37,10 +37,7 @@ export function StyleDirection() {
 
         <Marquee pauseOnHover className="[--duration:40s]">
           {CONCEPTS.map((concept) => (
-            <div
-              key={concept.number}
-              className="flex w-[260px] flex-col gap-3 md:w-[320px]"
-            >
+            <div key={concept.number} className="w-[260px] md:w-[320px]">
               <div className="relative aspect-[4/5] overflow-hidden border border-brand-gray-line bg-neutral-200 transition-transform hover:scale-[1.05]">
                 <Image
                   src={concept.image}
@@ -49,13 +46,7 @@ export function StyleDirection() {
                   sizes="(min-width: 768px) 320px, 260px"
                   className="object-cover"
                 />
-                <span className="absolute bottom-0 left-0 right-0 px-4 py-4 text-center font-mono text-xs uppercase tracking-wide text-white">
-                  Concept {concept.number} â€” {concept.type}
-                </span>
               </div>
-              <span className="text-center font-mono text-xs uppercase tracking-wide text-brand-gray-text">
-                Concept â€” {concept.type}
-              </span>
             </div>
           ))}
         </Marquee>
