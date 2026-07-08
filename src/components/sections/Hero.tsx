@@ -97,12 +97,12 @@ export function Hero() {
 
           <h1
             ref={headlineRef}
-            className="w-full max-w-none normal-case font-sans text-[clamp(2.7rem,8.2vw,4.4rem)] font-bold leading-[0.88] tracking-tight-display text-brand-black sm:text-[clamp(3.25rem,6.1vw,5.15rem)] lg:text-[clamp(3.85rem,4.8vw,6.05rem)] xl:text-[clamp(4.2rem,4.1vw,6.75rem)]"
+            className="w-full max-w-[11.5ch] normal-case font-sans text-[clamp(2.15rem,10vw,3rem)] font-bold leading-[0.9] tracking-tight-display text-brand-black sm:max-w-[12.5ch] sm:text-[clamp(3rem,6.1vw,5.15rem)] lg:max-w-none lg:text-[clamp(3.85rem,4.8vw,6.05rem)] xl:text-[clamp(4.2rem,4.1vw,6.75rem)]"
           >
-            <span className="block whitespace-nowrap normal-case">
+            <span className="block normal-case lg:whitespace-nowrap">
               You built the audience.
             </span>
-            <span className="block whitespace-nowrap normal-case">
+            <span className="block normal-case lg:whitespace-nowrap">
               We&apos;ll build the brand.
             </span>
           </h1>
@@ -139,7 +139,7 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="hero-carousel-shell mt-6 w-full sm:mt-7 lg:mt-6">
+        <div className="hero-carousel-shell mt-5 w-full sm:mt-7 lg:mt-6">
           <HeroCategoryCarousel />
         </div>
       </div>

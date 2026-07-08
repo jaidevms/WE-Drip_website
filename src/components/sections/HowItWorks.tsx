@@ -140,7 +140,7 @@ export function HowItWorks() {
         const cards = sectionRef.current?.querySelectorAll("[data-step-card]");
         if (!cards) return;
 
-        const triggers = Array.from(cards).map((card) =>
+        const tweens = Array.from(cards).map((card) =>
           gsap.from(card, {
             opacity: 0,
             x: -48,
@@ -154,11 +154,22 @@ export function HowItWorks() {
           })
         );
 
+        const stateTriggers = Array.from(cards).map((card, index) =>
+          ScrollTrigger.create({
+            trigger: card,
+            start: "top 68%",
+            end: "bottom 40%",
+            onEnter: () => setActiveStepIndex(index),
+            onEnterBack: () => setActiveStepIndex(index),
+          })
+        );
+
         return () => {
-          triggers.forEach((tween) => {
+          tweens.forEach((tween) => {
             tween.scrollTrigger?.kill();
             tween.kill();
           });
+          stateTriggers.forEach((trigger) => trigger.kill());
         };
       });
 
@@ -228,10 +239,18 @@ export function HowItWorks() {
           </div>
 
           {/* Mobile layout requires normal document flow */}
-          <div className="space-y-24 lg:hidden">
+          <div className="space-y-10 lg:hidden">
             {STEPS.map((step, index) => (
-              <div key={`mobile-${step.number}`} data-step-card className={index === 3 ? "-mt-[3px]" : ""}>
-
+              <div
+                key={`mobile-${step.number}`}
+                data-step-card
+                className={cn(
+                  "rounded-[28px] border border-white/10 bg-white/[0.03] p-6 transition-all duration-500",
+                  index === activeStepIndex
+                    ? "translate-x-0 border-brand-yellow/60 bg-white/[0.07] opacity-100 shadow-[0_16px_40px_rgba(0,0,0,0.24)]"
+                    : "translate-x-0 opacity-65"
+                )}
+              >
                 <div className="mb-6">
                   <div className="mb-4 h-[2px] w-16 bg-brand-yellow" />
                   <div className="flex items-baseline font-sans font-bold tracking-tight-display">

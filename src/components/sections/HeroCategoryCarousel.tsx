@@ -103,12 +103,15 @@ export function HeroCategoryCarousel() {
           <div className="h-full bg-[radial-gradient(36px_32px_at_50%_-1px,transparent_48%,#ddc3f2_51%)] bg-[length:72px_32px]" />
         </div>
 
-        <div className="relative flex min-w-0 items-end overflow-hidden px-4 pb-5 pt-8 sm:px-6 sm:pb-6 sm:pt-10 md:px-8 lg:px-10 lg:pb-5 lg:pt-8">
-          <div className="grid w-full grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5 lg:gap-3">
+        <div className="relative flex min-w-0 items-end overflow-hidden px-3 pb-4 pt-7 sm:px-6 sm:pb-6 sm:pt-10 md:px-8 lg:px-10 lg:pb-5 lg:pt-8">
+          <div className="grid w-full grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5 lg:gap-3">
             {visibleItems.map(({ label, src, tilt }, index) => (
               <div
                 key={`${label}-${index}`}
-                className="flex min-h-[118px] items-center justify-center lg:min-h-[108px]"
+                className={cn(
+                  "flex min-h-[88px] items-center justify-center sm:min-h-[118px] lg:min-h-[108px]",
+                  index === 4 && "col-span-2 sm:col-span-1"
+                )}
               >
                 <Image
                   src={src}
@@ -117,7 +120,7 @@ export function HeroCategoryCarousel() {
                   height={220}
                   unoptimized
                   className={cn(
-                    "hero-carousel-pop h-[4.5rem] w-[4.5rem] object-contain drop-shadow-[6px_8px_0_rgba(10,10,10,0.16)] transition-transform duration-500 sm:h-20 sm:w-20 lg:h-16 lg:w-16 xl:h-20 xl:w-20",
+                    "hero-carousel-pop h-[3.4rem] w-[3.4rem] object-contain drop-shadow-[6px_8px_0_rgba(10,10,10,0.16)] transition-transform duration-500 sm:h-20 sm:w-20 lg:h-16 lg:w-16 xl:h-20 xl:w-20",
                     tilt
                   )}
                   style={{ animationDelay: `${index * 110}ms` }}
@@ -127,7 +130,7 @@ export function HeroCategoryCarousel() {
           </div>
         </div>
 
-        <aside className="relative flex min-h-[150px] flex-col justify-between overflow-hidden bg-brand-black p-4 text-white sm:p-6 md:min-h-full md:p-8 lg:p-6">
+        <aside className="relative flex min-h-[132px] flex-col justify-between overflow-hidden bg-brand-black p-4 text-white sm:p-6 md:min-h-full md:p-8 lg:p-6">
           <div
             className="absolute -right-8 -top-10 h-20 w-20 rounded-full border-[18px] border-[#ddc3f2] opacity-95"
             aria-hidden="true"
@@ -138,7 +141,7 @@ export function HeroCategoryCarousel() {
           />
           <div>
             <div className="hero-carousel-star mb-4 h-10 w-10 text-brand-yellow sm:mb-5 sm:h-11 sm:w-11" />
-            <h2 className="max-w-[12ch] text-[1.35rem] font-bold leading-tight tracking-normal sm:text-3xl lg:text-[24px]">
+            <h2 className="max-w-[11ch] text-[1.15rem] font-bold leading-tight tracking-normal sm:text-3xl lg:text-[24px]">
               Creator Merch Drops
             </h2>
           </div>
