@@ -65,7 +65,7 @@ export default function ApplyPage() {
           </a>
           {" · "}
           <a
-            href="mailto:we.drip.cma@gmail.com"
+            href="mailto:sharath.creator2210@gmail.com"
             className="font-bold text-brand-black underline-offset-2 hover:underline"
           >
             Email

@@ -230,6 +230,28 @@
   );
 }
 
+@media (min-width: 1024px) and (max-height: 860px) {
+  .hero-shell {
+    padding-top: 3.5rem;
+    padding-bottom: 0.75rem;
+  }
+
+  .hero-carousel-shell {
+    margin-top: 1rem;
+  }
+}
+
+@media (min-width: 1280px) and (max-height: 900px) {
+  .hero-shell {
+    padding-top: 4rem;
+    padding-bottom: 0.75rem;
+  }
+
+  .hero-carousel-shell {
+    margin-top: 1.25rem;
+  }
+}
+
 html[data-skip-intro="1"] .page-entry-curtain {
   display: none;
 }

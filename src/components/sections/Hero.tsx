@@ -80,7 +80,7 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative flex flex-col overflow-hidden bg-brand-off-white"
+      className="relative flex min-h-screen flex-col overflow-x-clip bg-brand-off-white"
     >
       <DotPattern
         className="text-brand-yellow opacity-[0.04]"
@@ -88,50 +88,60 @@ export function Hero() {
         height={20}
       />
 
-<div className="relative z-10 flex flex-col items-center px-6 pb-2 pt-12 text-center md:pb-2 md:pt-12 lg:pt-14">        <div ref={barRef} className="mb-6 h-1 w-20 bg-brand-yellow" />
+      <div className="hero-shell relative z-10 mx-auto flex w-full max-w-7xl flex-1 flex-col items-center justify-center px-4 pb-4 pt-[4rem] text-center sm:px-6 sm:pb-6 sm:pt-[5rem] lg:px-8 lg:pb-1 lg:pt-[2.75rem] xl:pt-[3.25rem]">
+        <div className="flex flex-col items-center">
+          <div
+            ref={barRef}
+            className="mb-5 h-1 w-16 bg-brand-yellow sm:mb-6 sm:w-20"
+          />
 
-        <h1
-          ref={headlineRef}
-          className="max-w-[1600px] font-sans text-[34px] font-bold uppercase leading-[0.95] tracking-tight-display text-brand-black min-[460px]:text-[42px] min-[840px]:text-[60px] lg:text-[74px] xl:text-[88px]"
-        >
-          <span className="block">YOU BUILT THE AUDIENCE.</span>
-          <span className="block">WE&apos;LL BUILD THE BRAND.</span>
-        </h1>
+          <h1
+            ref={headlineRef}
+            className="w-full max-w-none normal-case font-sans text-[clamp(2.7rem,8.2vw,4.4rem)] font-bold leading-[0.88] tracking-tight-display text-brand-black sm:text-[clamp(3.25rem,6.1vw,5.15rem)] lg:text-[clamp(3.85rem,4.8vw,6.05rem)] xl:text-[clamp(4.2rem,4.1vw,6.75rem)]"
+          >
+            <span className="block whitespace-nowrap normal-case">
+              You built the audience.
+            </span>
+            <span className="block whitespace-nowrap normal-case">
+              We&apos;ll build the brand.
+            </span>
+          </h1>
 
-        <p
-          ref={sublineRef}
-          className="mt-4 max-w-[560px] text-base leading-relaxed text-brand-gray-text md:text-lg"
-        >
-          India&apos;s merch agency for creators. We design it, build the
-          store, handle production. You just show up.
-        </p>
+          <p
+            ref={sublineRef}
+            className="mt-4 max-w-[34rem] text-sm leading-relaxed text-brand-gray-text sm:mt-5 sm:text-base md:text-lg"
+          >
+            India&apos;s merch agency for creators. We design it, build the
+            store, handle production. You just show up.
+          </p>
 
-        <div
-          ref={ctaRowRef}
-          className="mt-5 flex w-full flex-col items-center gap-4 sm:w-auto sm:flex-row"
-        >
-          <Magnetic>
-            <Link
-              href="/apply"
-              className="flex w-full items-center justify-center gap-2 rounded-[4px] bg-brand-black px-8 py-4 text-base font-bold uppercase tracking-wide text-white transition-colors hover:bg-brand-yellow hover:text-brand-black sm:w-auto"
-            >
-              Apply Now
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-          </Magnetic>
-          <Magnetic>
-            <Link
-              href="#packages"
-              className="flex w-full items-center justify-center rounded-[4px] border border-brand-black bg-transparent px-8 py-4 text-base font-bold uppercase tracking-wide text-brand-black transition-colors hover:bg-brand-black hover:text-white sm:w-auto"
-            >
-              See Packages
-            </Link>
-          </Magnetic>
+          <div
+            ref={ctaRowRef}
+            className="mt-5 flex w-full flex-col items-stretch gap-3 sm:mt-6 sm:w-auto sm:flex-row sm:items-center sm:gap-4"
+          >
+            <Magnetic>
+              <Link
+                href="/apply"
+                className="flex w-full items-center justify-center gap-2 rounded-[4px] bg-brand-black px-7 py-3.5 text-sm font-bold uppercase tracking-wide text-white transition-colors hover:bg-brand-yellow hover:text-brand-black sm:min-w-[190px] sm:w-auto sm:px-8 sm:py-4 sm:text-base"
+              >
+                Apply Now
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </Magnetic>
+            <Magnetic>
+              <Link
+                href="#packages"
+                className="flex w-full items-center justify-center rounded-[4px] border border-brand-black bg-transparent px-7 py-3.5 text-sm font-bold uppercase tracking-wide text-brand-black transition-colors hover:bg-brand-black hover:text-white sm:min-w-[190px] sm:w-auto sm:px-8 sm:py-4 sm:text-base"
+              >
+                See Packages
+              </Link>
+            </Magnetic>
+          </div>
         </div>
 
-        <div className="-mt-6 w-full">
-    <HeroCategoryCarousel />
-</div>
+        <div className="hero-carousel-shell mt-6 w-full sm:mt-7 lg:mt-6">
+          <HeroCategoryCarousel />
+        </div>
       </div>
 
       <Marquee

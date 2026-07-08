@@ -5,7 +5,7 @@ import { BlurFade } from "@/components/ui/blur-fade";
 import { AnimatedShinyText } from "@/components/ui/animated-shiny-text";
 
 const WHATSAPP_URL =
-  "https://wa.me/917550022162?text=Hi%20WeDrip%2C%20I'm%20interested.";
+  "https://wa.me/916382877479?text=Hi%20WeDrip%2C%20I'm%20interested.";
 
 const SITEMAP_LINKS = [
   { href: "#home", label: "Home" },
@@ -73,7 +73,7 @@ export function FinalCta() {
                     <span>
                       WhatsApp
                       <span className="ml-2 font-mono text-sm text-white/70">
-                        +91 75500 22162
+                        +91 63828 77479
                       </span>
                     </span>
                   </a>
@@ -96,14 +96,14 @@ export function FinalCta() {
                 </Magnetic>
                 <Magnetic>
                   <a
-                    href="mailto:we.drip.cma@gmail.com"
+                    href="mailto:sharath.creator2210@gmail.com"
                     className="flex items-center gap-3 text-white transition-colors hover:text-brand-yellow"
                   >
                     <Mail className="h-4 w-4" />
                     <span>
                       Email
                       <span className="ml-2 font-mono text-sm text-white/70">
-                        we.drip.cma@gmail.com
+                        sharath.creator2210@gmail.com
                       </span>
                     </span>
                   </a>

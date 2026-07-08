@@ -10,7 +10,7 @@ import { FinalCta } from "@/components/sections/FinalCta";
 
 export default function Home() {
   return (
-    <main>
+    <main className="overflow-x-clip">
       <Hero />
       <HowItWorks />
       <WhatWeHandle />

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import Image from "next/image";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -93,31 +94,30 @@ export function HeroCategoryCarousel() {
   };
 
   return (
-    <div className="mt-8 w-full max-w-5xl overflow-hidden border-y border-brand-black/10 bg-[#ddc3f2] text-left shadow-[0_18px_45px_rgba(10,10,10,0.08)] md:mt-12">
-      <div className="relative grid min-h-[230px] md:grid-cols-[1fr_320px]">
+    <div className="w-full max-w-[72rem] overflow-hidden border-y border-brand-black/10 bg-[#ddc3f2] text-left shadow-[0_18px_45px_rgba(10,10,10,0.08)]">
+      <div className="relative grid min-h-[180px] grid-cols-1 md:grid-cols-[minmax(0,1fr)_minmax(280px,320px)] lg:min-h-[168px]">
         <div
-          className="absolute left-0 top-0 h-8 w-full bg-brand-off-white"
+          className="absolute left-0 top-0 h-6 w-full bg-brand-off-white sm:h-8"
           aria-hidden="true"
         >
           <div className="h-full bg-[radial-gradient(36px_32px_at_50%_-1px,transparent_48%,#ddc3f2_51%)] bg-[length:72px_32px]" />
         </div>
 
-        <div className="relative flex min-w-0 items-end overflow-hidden px-5 pb-7 pt-12 sm:px-8 md:px-10">
-          <div className="grid w-full grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-5">
+        <div className="relative flex min-w-0 items-end overflow-hidden px-4 pb-5 pt-8 sm:px-6 sm:pb-6 sm:pt-10 md:px-8 lg:px-10 lg:pb-5 lg:pt-8">
+          <div className="grid w-full grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5 lg:gap-3">
             {visibleItems.map(({ label, src, tilt }, index) => (
               <div
                 key={`${label}-${index}`}
-                className={cn(
-                  "flex min-h-[142px] items-center justify-center",
-                  index === 3 && "block sm:hidden lg:block",
-                  index === 4 && "hidden lg:block"
-                )}
+                className="flex min-h-[118px] items-center justify-center lg:min-h-[108px]"
               >
-                <img
+                <Image
                   src={src}
                   alt={label}
+                  width={220}
+                  height={220}
+                  unoptimized
                   className={cn(
-                    "hero-carousel-pop h-20 w-20 object-contain drop-shadow-[6px_8px_0_rgba(10,10,10,0.16)] transition-transform duration-500 sm:h-24 sm:w-24",
+                    "hero-carousel-pop h-[4.5rem] w-[4.5rem] object-contain drop-shadow-[6px_8px_0_rgba(10,10,10,0.16)] transition-transform duration-500 sm:h-20 sm:w-20 lg:h-16 lg:w-16 xl:h-20 xl:w-20",
                     tilt
                   )}
                   style={{ animationDelay: `${index * 110}ms` }}
@@ -127,18 +127,18 @@ export function HeroCategoryCarousel() {
           </div>
         </div>
 
-        <aside className="relative flex min-h-[190px] flex-col justify-between overflow-hidden bg-brand-black p-7 text-white md:min-h-full md:p-10">
+        <aside className="relative flex min-h-[150px] flex-col justify-between overflow-hidden bg-brand-black p-4 text-white sm:p-6 md:min-h-full md:p-8 lg:p-6">
           <div
             className="absolute -right-8 -top-10 h-20 w-20 rounded-full border-[18px] border-[#ddc3f2] opacity-95"
             aria-hidden="true"
           />
           <div
-            className="absolute -bottom-10 -right-5 h-28 w-28 border-l-[16px] border-t-[16px] border-[#ddc3f2] rotate-45"
+            className="absolute -bottom-10 -right-5 h-28 w-28 rotate-45 border-l-[16px] border-t-[16px] border-[#ddc3f2]"
             aria-hidden="true"
           />
           <div>
-            <div className="hero-carousel-star mb-5 h-11 w-11 text-brand-yellow" />
-            <h2 className="max-w-[190px] text-3xl font-bold leading-tight tracking-normal">
+            <div className="hero-carousel-star mb-4 h-10 w-10 text-brand-yellow sm:mb-5 sm:h-11 sm:w-11" />
+            <h2 className="max-w-[12ch] text-[1.35rem] font-bold leading-tight tracking-normal sm:text-3xl lg:text-[24px]">
               Creator Merch Drops
             </h2>
           </div>
@@ -147,7 +147,7 @@ export function HeroCategoryCarousel() {
               type="button"
               aria-label="Previous category"
               onClick={() => move("prev")}
-              className="flex h-11 w-11 items-center justify-center border border-white/25 bg-white/5 text-white transition-colors hover:bg-white hover:text-brand-black"
+              className="flex h-10 w-10 items-center justify-center border border-white/25 bg-white/5 text-white transition-colors hover:bg-white hover:text-brand-black sm:h-11 sm:w-11"
             >
               <ArrowLeft className="h-5 w-5" />
             </button>
@@ -155,18 +155,18 @@ export function HeroCategoryCarousel() {
               type="button"
               aria-label="Next category"
               onClick={() => move("next")}
-              className="flex h-11 w-11 items-center justify-center border border-white/25 bg-white/5 text-white transition-colors hover:bg-white hover:text-brand-black"
+              className="flex h-10 w-10 items-center justify-center border border-white/25 bg-white/5 text-white transition-colors hover:bg-white hover:text-brand-black sm:h-11 sm:w-11"
             >
               <ArrowRight className="h-5 w-5" />
             </button>
           </div>
         </aside>
       </div>
-      <div className="grid border-t border-brand-black/10 bg-brand-off-white md:grid-cols-[220px_1fr]">
-        <div className="border-b border-brand-black/10 px-5 py-4 font-mono text-xs font-bold uppercase tracking-wide text-brand-black md:border-b-0 md:border-r">
+      <div className="grid border-t border-brand-black/10 bg-brand-off-white md:grid-cols-[200px_1fr]">
+        <div className="border-b border-brand-black/10 px-4 py-3 font-mono text-xs font-bold uppercase tracking-wide text-brand-black sm:px-5 md:border-b-0 md:border-r md:py-4">
           How it works
         </div>
-        <div className="relative overflow-hidden px-5 py-4">
+        <div className="relative overflow-hidden px-4 py-3 sm:px-5 sm:py-4">
           <div
             className="flex transition-transform duration-700 ease-[cubic-bezier(.22,1,.36,1)]"
             style={{ transform: `translateX(-${activeStep * 100}%)` }}
