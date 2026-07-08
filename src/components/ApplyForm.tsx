@@ -4,7 +4,6 @@ import { useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
 import { ArrowRight } from "lucide-react";
 
 import {
@@ -29,31 +28,8 @@ import { Button } from "@/components/ui/button";
 import { BlurFade } from "@/components/ui/blur-fade";
 import { BorderBeam } from "@/components/ui/border-beam";
 import { Magnetic } from "@/components/Magnetic";
+import { applyFormSchema, type ApplyFormValues } from "@/lib/apply-form";
 import { cn } from "@/lib/utils";
-
-const applyFormSchema = z.object({
-  name: z.string().min(1, "Required").max(100),
-  email: z.string().email("Enter a valid email"),
-  whatsapp: z.string().min(8, "Enter a valid number").max(20),
-  social_handle: z.string().min(1, "Required").max(100),
-  follower_range: z.enum(["under_50k", "50k_100k", "100k_500k", "500k_plus"], {
-    message: "Select your audience size",
-  }),
-  niche: z.string().min(1, "Required").max(100),
-  package_interest: z.enum(
-    ["exclusive_drop", "standard", "full_service", "not_sure"],
-    { message: "Select a package" }
-  ),
-  message: z.string().max(2000).optional(),
-  content_link: z
-    .union([z.literal(""), z.string().url()], { message: "Enter a valid URL" })
-    .optional(),
-  policy_ack: z.boolean().refine((v) => v === true, {
-    message: "Please confirm you've read the policies",
-  }),
-});
-
-type ApplyFormValues = z.infer<typeof applyFormSchema>;
 
 const PACKAGE_PARAM_MAP: Record<string, ApplyFormValues["package_interest"]> = {
   "exclusive-drop": "exclusive_drop",
@@ -89,6 +65,7 @@ export function ApplyForm({ onSubmitSuccess }: ApplyFormProps) {
   const searchParams = useSearchParams();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isBeamHovered, setIsBeamHovered] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const packageParam = searchParams.get("package");
   const prefilledPackage = packageParam
@@ -114,10 +91,30 @@ export function ApplyForm({ onSubmitSuccess }: ApplyFormProps) {
 
   async function onSubmit(values: ApplyFormValues) {
     setIsSubmitting(true);
-    console.log("Form submitted:", values);
-    await new Promise((resolve) => setTimeout(resolve, 600));
-    setIsSubmitting(false);
-    onSubmitSuccess();
+    setSubmitError(null);
+
+    try {
+      const response = await fetch("/api/apply", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+      });
+
+      const result = (await response.json()) as { ok?: boolean; error?: string };
+
+      if (!response.ok || !result.ok) {
+        setSubmitError(result.error ?? "Failed to submit your application.");
+        return;
+      }
+
+      onSubmitSuccess();
+    } catch {
+      setSubmitError("Failed to submit your application.");
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -385,6 +382,11 @@ export function ApplyForm({ onSubmitSuccess }: ApplyFormProps) {
 
         <BlurFade delay={10 * 0.04}>
           <div className="relative mt-2">
+            {submitError ? (
+              <p className="mb-4 font-mono text-xs uppercase tracking-wide text-destructive">
+                {submitError}
+              </p>
+            ) : null}
             <Magnetic>
               <Button
                 type="submit"
