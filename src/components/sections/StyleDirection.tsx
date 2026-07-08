@@ -1,13 +1,19 @@
-import { Shirt, Coffee } from "lucide-react";
+import Image from "next/image";
 import { Marquee } from "@/components/ui/marquee";
+import carousel1 from "../../../carousel/1.jpeg";
+import carousel2 from "../../../carousel/2.jpg";
+import carousel3 from "../../../carousel/3.jpeg";
+import carousel4 from "../../../carousel/4.jpg";
+import carousel5 from "../../../carousel/5.jpeg";
+import carousel6 from "../../../carousel/6.jpg";
 
 const CONCEPTS = [
-  { number: "01", type: "HOODIE", icon: Shirt },
-  { number: "02", type: "MUG", icon: Coffee },
-  { number: "03", type: "TEE", icon: Shirt },
-  { number: "04", type: "HOODIE", icon: Shirt },
-  { number: "05", type: "MUG", icon: Coffee },
-  { number: "06", type: "TEE", icon: Shirt },
+  { number: "01", type: "HOODIE", image: carousel1 },
+  { number: "02", type: "MUG", image: carousel2 },
+  { number: "03", type: "TEE", image: carousel3 },
+  { number: "04", type: "HOODIE", image: carousel4 },
+  { number: "05", type: "MUG", image: carousel5 },
+  { number: "06", type: "TEE", image: carousel6 },
 ];
 
 export function StyleDirection() {
@@ -21,7 +27,7 @@ export function StyleDirection() {
           This is the kind of work we make.
         </h2>
         <p className="mt-4 text-base text-brand-gray-text md:text-lg">
-          Yours will be yours alone — these are concepts to show our range.
+          Yours will be yours alone â€” these are concepts to show our range.
         </p>
       </div>
 
@@ -30,28 +36,28 @@ export function StyleDirection() {
         <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-brand-off-white to-transparent md:w-32" />
 
         <Marquee pauseOnHover className="[--duration:40s]">
-          {CONCEPTS.map((concept) => {
-            const Icon = concept.icon;
-            return (
-              <div
-                key={concept.number}
-                className="flex w-[260px] flex-col gap-3 md:w-[320px]"
-              >
-                <div className="flex aspect-[4/5] flex-col items-center justify-center gap-4 border border-brand-gray-line bg-neutral-200 transition-transform hover:scale-[1.05]">
-                  <Icon
-                    className="h-10 w-10 text-neutral-500"
-                    strokeWidth={1.5}
-                  />
-                  <span className="px-4 text-center font-mono text-xs uppercase tracking-wide text-neutral-500">
-                    Concept {concept.number} — {concept.type}
-                  </span>
-                </div>
-                <span className="text-center font-mono text-xs uppercase tracking-wide text-brand-gray-text">
-                  Concept — {concept.type}
+          {CONCEPTS.map((concept) => (
+            <div
+              key={concept.number}
+              className="flex w-[260px] flex-col gap-3 md:w-[320px]"
+            >
+              <div className="relative aspect-[4/5] overflow-hidden border border-brand-gray-line bg-neutral-200 transition-transform hover:scale-[1.05]">
+                <Image
+                  src={concept.image}
+                  alt={`Concept ${concept.number} ${concept.type}`}
+                  fill
+                  sizes="(min-width: 768px) 320px, 260px"
+                  className="object-cover"
+                />
+                <span className="absolute bottom-0 left-0 right-0 px-4 py-4 text-center font-mono text-xs uppercase tracking-wide text-white">
+                  Concept {concept.number} â€” {concept.type}
                 </span>
               </div>
-            );
-          })}
+              <span className="text-center font-mono text-xs uppercase tracking-wide text-brand-gray-text">
+                Concept â€” {concept.type}
+              </span>
+            </div>
+          ))}
         </Marquee>
       </div>
     </section>

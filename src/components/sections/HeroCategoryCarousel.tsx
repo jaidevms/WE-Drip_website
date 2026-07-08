@@ -4,40 +4,37 @@ import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
-
-const svgImage = (svg: string) =>
-  `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+import heroCarousel1 from "../../../hero_carousel/1.jpeg";
+import heroCarousel2 from "../../../hero_carousel/2.jpeg";
+import heroCarousel3 from "../../../hero_carousel/3.jpeg";
+import heroCarousel4 from "../../../hero_carousel/4.jpeg";
+import heroCarousel5 from "../../../hero_carousel/5.jpeg";
 
 const MERCH_IMAGES = [
   {
-    label: "Creator hoodie",
+    label: "Hero carousel image 1",
     tilt: "-rotate-6",
-    src: svgImage(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 220"><rect width="220" height="220" fill="#f8f6f0"/><path d="M74 70c9-21 63-21 72 0l34 19-20 42-16-8v63H76v-63l-16 8-20-42 34-19Z" fill="#111"/><path d="M88 65c7 15 37 15 44 0" fill="none" stroke="#fed400" stroke-width="10" stroke-linecap="round"/><path d="M91 118h58v39H91z" fill="#fed400"/><path d="M101 129h38v8h-38zm0 14h30v8h-30z" fill="#111"/><path d="M80 90c10 12 50 12 60 0" fill="none" stroke="#333" stroke-width="4"/></svg>`),
+    src: heroCarousel1,
   },
   {
-    label: "Drop tee",
+    label: "Hero carousel image 2",
     tilt: "rotate-3",
-    src: svgImage(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 220"><rect width="220" height="220" fill="#ddc3f2"/><path d="M70 56h32c5 10 21 10 26 0h32l28 36-25 24-13-12v82H80v-82l-13 12-25-24 28-36Z" fill="#fff" stroke="#111" stroke-width="5"/><circle cx="115" cy="122" r="31" fill="#fed400"/><path d="M91 124h48M115 100v48" stroke="#111" stroke-width="9" stroke-linecap="round"/></svg>`),
+    src: heroCarousel2,
   },
   {
-    label: "Fan cap",
+    label: "Hero carousel image 3",
     tilt: "-rotate-2",
-    src: svgImage(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 220"><rect width="220" height="220" fill="#d6f3ff"/><path d="M54 122c7-36 34-61 70-61 34 0 55 20 62 53-48-12-91-10-132 8Z" fill="#111"/><path d="M53 123c40-14 83-16 132-8 12 3 18 15 11 26-48-9-94-8-136 4-12 3-19-13-7-22Z" fill="#fed400" stroke="#111" stroke-width="5"/><path d="M101 82h41v28h-41z" fill="#fff"/><path d="M110 92h23v8h-23z" fill="#111"/></svg>`),
+    src: heroCarousel3,
   },
   {
-    label: "Creator bottle",
+    label: "Hero carousel image 4",
     tilt: "rotate-6",
-    src: svgImage(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 220"><rect width="220" height="220" fill="#ff7a45"/><path d="M91 28h38v25H91z" fill="#111"/><path d="M85 57h50l9 126c1 12-7 22-19 22H95c-12 0-20-10-19-22L85 57Z" fill="#f8f6f0" stroke="#111" stroke-width="5"/><path d="M89 90h48v65H89z" fill="#111"/><path d="M99 104h28v10H99zm0 19h18v10H99z" fill="#fed400"/></svg>`),
+    src: heroCarousel4,
   },
   {
-    label: "Tote bag",
+    label: "Hero carousel image 5",
     tilt: "-rotate-3",
-    src: svgImage(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 220"><rect width="220" height="220" fill="#b9f3d3"/><path d="M72 78h76l13 112H59L72 78Z" fill="#f8f6f0" stroke="#111" stroke-width="5"/><path d="M91 82c0-27 38-27 38 0" fill="none" stroke="#111" stroke-width="7"/><path d="M86 123h48v36H86z" fill="#fed400"/><path d="M96 136h28" stroke="#111" stroke-width="7" stroke-linecap="round"/></svg>`),
-  },
-  {
-    label: "Sticker sheet",
-    tilt: "rotate-2",
-    src: svgImage(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 220"><rect width="220" height="220" fill="#fed400"/><rect x="56" y="39" width="108" height="142" rx="8" fill="#fff" stroke="#111" stroke-width="5" transform="rotate(-6 110 110)"/><circle cx="92" cy="84" r="18" fill="#111"/><path d="M124 69l17 30h-34l17-30Z" fill="#ff4d4d"/><rect x="82" y="119" width="62" height="20" rx="10" fill="#ddc3f2"/><path d="M83 154h60" stroke="#111" stroke-width="8" stroke-linecap="round"/></svg>`),
+    src: heroCarousel5,
   },
 ];
 
@@ -45,7 +42,7 @@ const HERO_STEPS = [
   {
     title: "Reach out",
     description:
-      "Send us your handle, your audience size, and the vibe you want. WhatsApp, Instagram, email — whatever works.",
+      "Send us your handle, your audience size, and the vibe you want. WhatsApp, Instagram, email â€” whatever works.",
   },
   {
     title: "We design",
@@ -118,7 +115,6 @@ export function HeroCategoryCarousel() {
                   alt={label}
                   width={220}
                   height={220}
-                  unoptimized
                   className={cn(
                     "hero-carousel-pop h-[3.4rem] w-[3.4rem] object-contain drop-shadow-[6px_8px_0_rgba(10,10,10,0.16)] transition-transform duration-500 sm:h-20 sm:w-20 lg:h-16 lg:w-16 xl:h-20 xl:w-20",
                     tilt
