@@ -5,7 +5,7 @@ import { BlurFade } from "@/components/ui/blur-fade";
 import { AnimatedShinyText } from "@/components/ui/animated-shiny-text";
 
 const WHATSAPP_URL =
-  "https://wa.me/916382877479?text=Hi%20WeDrip%2C%20I'm%20interested.";
+  "https://wa.me/917550022162";
 
 const SITEMAP_LINKS = [
   { href: "#home", label: "Home" },
@@ -73,14 +73,14 @@ export function FinalCta() {
                     <span>
                       WhatsApp
                       <span className="ml-2 font-mono text-sm text-white/70">
-                        +91 63828 77479
+                        +91 7550022162
                       </span>
                     </span>
                   </a>
                 </Magnetic>
                 <Magnetic>
                   <a
-                    href="https://instagram.com/wedripout"
+                    href="https://www.instagram.com/wedrip.merch/?utm_source=ig_web_button_share_sheet"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-3 text-white transition-colors hover:text-brand-yellow"
@@ -89,21 +89,21 @@ export function FinalCta() {
                     <span>
                       Instagram
                       <span className="ml-2 font-mono text-sm text-white/70">
-                        @wedripout
+                        @wedrip
                       </span>
                     </span>
                   </a>
                 </Magnetic>
                 <Magnetic>
                   <a
-                    href="mailto:sharath.creator2210@gmail.com"
+                    href="mailto:we.drip.cma@gmail.com"
                     className="flex items-center gap-3 text-white transition-colors hover:text-brand-yellow"
                   >
                     <Mail className="h-4 w-4" />
                     <span>
                       Email
                       <span className="ml-2 font-mono text-sm text-white/70">
-                        sharath.creator2210@gmail.com
+                        we.drip.cma@gmail.com
                       </span>
                     </span>
                   </a>
