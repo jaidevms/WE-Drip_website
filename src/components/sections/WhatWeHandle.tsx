@@ -60,7 +60,7 @@ const PILLARS: Pillar[] = [
     number: "06",
     icon: MessageCircle,
     title: "Customer Care",
-    description: "DMs, refunds, shipping queries — handled on your behalf.",
+    description: "DMs, refunds, shipping queries handled on your behalf.",
   },
 ];
 

@@ -16,7 +16,7 @@ const STEPS: Step[] = [
     number: "01",
     title: "Reach out",
     description:
-      "Send us your handle, your audience size, and the vibe you want. WhatsApp, Instagram, email — whatever works.",
+      "Send us your handle, your audience size, and the vibe you want. WhatsApp, Instagram, email whatever works",
   },
   {
     number: "02",
@@ -45,7 +45,7 @@ const STORY_LINES = [
   "STORE",
   "RETURNS",
   "CUSTOMER CARE",
-  "BY THE TIME YOU FIGURE IT OUT—",
+  "BY THE TIME YOU FIGURE IT OUT",
   "THE MOMENT IS GONE.",
 ];
 
