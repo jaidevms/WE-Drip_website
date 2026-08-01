@@ -22,7 +22,8 @@ const structuredData = {
       alternateName: siteConfig.alternateNames,
       description: siteConfig.description,
       url: absoluteUrl("/"),
-      logo: absoluteUrl("/icon.svg"),
+      logo: absoluteUrl("/logo-512.png"),
+      image: absoluteUrl("/logo-512.png"),
       email: siteConfig.email,
       sameAs: [siteConfig.instagram],
       contactPoint: {
