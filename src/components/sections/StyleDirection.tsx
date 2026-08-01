@@ -18,12 +18,12 @@ const CONCEPTS = [
 
 export function StyleDirection() {
   return (
-    <section className="bg-brand-off-white py-16 md:py-[120px]">
+    <section aria-labelledby="style-direction-heading" className="bg-brand-off-white py-16 md:py-[120px]">
       <div className="mx-auto max-w-2xl px-6 text-center">
         <span className="font-mono text-xs uppercase tracking-wide text-brand-yellow">
           Style Direction
         </span>
-        <h2 className="mt-2 text-[32px] font-bold uppercase leading-[1.05] tracking-tight-display text-brand-black md:text-[52px]">
+        <h2 id="style-direction-heading" className="mt-2 text-[32px] font-bold uppercase leading-[1.05] tracking-tight-display text-brand-black md:text-[52px]">
           This is the kind of work we make.
         </h2>
         <p className="mt-4 text-base text-brand-gray-text md:text-lg">
@@ -44,6 +44,7 @@ export function StyleDirection() {
                   alt={`Concept ${concept.number} ${concept.type}`}
                   fill
                   sizes="(min-width: 768px) 320px, 260px"
+                  quality={80}
                   className="object-cover"
                 />
               </div>

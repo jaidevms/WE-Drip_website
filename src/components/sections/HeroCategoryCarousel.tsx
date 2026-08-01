@@ -12,27 +12,27 @@ import heroCarousel5 from "../../../hero_carousel/5.jpeg";
 
 const MERCH_IMAGES = [
   {
-    label: "Hero carousel image 1",
+    label: "Black creator hoodie merchandise concept",
     tilt: "-rotate-6",
     src: heroCarousel1,
   },
   {
-    label: "Hero carousel image 2",
+    label: "Custom coffee mug merchandise concept",
     tilt: "rotate-3",
     src: heroCarousel2,
   },
   {
-    label: "Hero carousel image 3",
+    label: "Streetwear t-shirt merchandise concept",
     tilt: "-rotate-2",
     src: heroCarousel3,
   },
   {
-    label: "Hero carousel image 4",
+    label: "Bold yellow hoodie merchandise concept",
     tilt: "rotate-6",
     src: heroCarousel4,
   },
   {
-    label: "Hero carousel image 5",
+    label: "Minimal creator apparel merchandise concept",
     tilt: "-rotate-3",
     src: heroCarousel5,
   },
@@ -42,7 +42,7 @@ const HERO_STEPS = [
   {
     title: "Reach out",
     description:
-      "Send us your handle, your audience size, and the vibe you want. WhatsApp, Instagram, email â€” whatever works.",
+      "Send us your handle, your audience size, and the vibe you want. WhatsApp, Instagram, email, whatever works.",
   },
   {
     title: "We design",
@@ -64,6 +64,7 @@ const HERO_STEPS = [
 export function HeroCategoryCarousel() {
   const [active, setActive] = useState(0);
   const [activeStep, setActiveStep] = useState(0);
+
   const visibleItems = useMemo(
     () =>
       Array.from({ length: 5 }, (_, index) => {
@@ -88,10 +89,19 @@ export function HeroCategoryCarousel() {
         ? (current + 1) % MERCH_IMAGES.length
         : (current - 1 + MERCH_IMAGES.length) % MERCH_IMAGES.length
     );
+    setActiveStep((current) =>
+      direction === "next"
+        ? (current + 1) % HERO_STEPS.length
+        : (current - 1 + HERO_STEPS.length) % HERO_STEPS.length
+    );
   };
 
   return (
-    <div className="w-full max-w-[72rem] overflow-hidden border-y border-brand-black/10 bg-[#ddc3f2] text-left shadow-[0_18px_45px_rgba(10,10,10,0.08)]">
+    <div
+      className="w-full max-w-[72rem] overflow-hidden border-y border-brand-black/10 bg-[#ddc3f2] text-left shadow-[0_18px_45px_rgba(10,10,10,0.08)]"
+      aria-label="Creator merchandise examples and process steps"
+      role="region"
+    >
       <div className="relative grid min-h-[180px] grid-cols-1 md:grid-cols-[minmax(0,1fr)_minmax(280px,320px)] lg:min-h-[168px]">
         <div
           className="absolute left-0 top-0 h-6 w-full bg-brand-off-white sm:h-8"
@@ -115,6 +125,9 @@ export function HeroCategoryCarousel() {
                   alt={label}
                   width={220}
                   height={220}
+                  sizes="(min-width: 1280px) 80px, (min-width: 1024px) 64px, (min-width: 640px) 80px, 54px"
+                  priority={index === 0}
+                  quality={80}
                   className={cn(
                     "hero-carousel-pop h-[3.4rem] w-[3.4rem] object-contain drop-shadow-[6px_8px_0_rgba(10,10,10,0.16)] transition-transform duration-500 sm:h-20 sm:w-20 lg:h-16 lg:w-16 xl:h-20 xl:w-20",
                     tilt
@@ -165,7 +178,7 @@ export function HeroCategoryCarousel() {
         <div className="border-b border-brand-black/10 px-4 py-3 font-mono text-xs font-bold uppercase tracking-wide text-brand-black sm:px-5 md:border-b-0 md:border-r md:py-4">
           How it works
         </div>
-        <div className="relative overflow-hidden px-4 py-3 sm:px-5 sm:py-4">
+        <div className="relative overflow-hidden px-4 py-3 sm:px-5 sm:py-4" aria-live="polite">
           <div
             className="flex transition-transform duration-700 ease-[cubic-bezier(.22,1,.36,1)]"
             style={{ transform: `translateX(-${activeStep * 100}%)` }}

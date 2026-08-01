@@ -9,10 +9,10 @@ import { ScrollTrigger } from "@/lib/gsap";
 import { Magnetic } from "@/components/Magnetic";
 
 const NAV_LINKS = [
-  { href: "#home", label: "Home" },
-  { href: "#how-it-works", label: "How it works" },
-  { href: "#packages", label: "Packages" },
-  { href: "/#faq", label: "FAQ" },
+  { href: "/", section: "#home", label: "Home" },
+  { href: "/#how-it-works", section: "#how-it-works", label: "How it works" },
+  { href: "/#packages", section: "#packages", label: "Packages" },
+  { href: "/#faq", section: "#faq", label: "FAQ" },
 ];
 
 function Wordmark({ light = false }: { light?: boolean }) {
@@ -24,7 +24,10 @@ function Wordmark({ light = false }: { light?: boolean }) {
       )}
     >
       WeDrip
-      <span aria-hidden="true" className="ml-0.5 text-2xl leading-none text-brand-yellow relative -top-[3px]">
+      <span
+        aria-hidden="true"
+        className="relative -top-[3px] ml-0.5 text-2xl leading-none text-brand-yellow"
+      >
         &bull;
       </span>
     </span>
@@ -34,7 +37,7 @@ function Wordmark({ light = false }: { light?: boolean }) {
 export function StickyNav() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [activeHref, setActiveHref] = useState("#home");
+  const [activeHref, setActiveHref] = useState("/");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 80);
@@ -44,19 +47,19 @@ export function StickyNav() {
   }, []);
 
   useGSAP(() => {
-    const triggers = NAV_LINKS.map(({ href }) => {
-      const sectionSelector = href.startsWith("/#") ? href.slice(1) : href;
-      if (!sectionSelector.startsWith("#")) return null;
-      const section = document.querySelector(sectionSelector);
-      if (!section) return null;
+    const triggers = NAV_LINKS.map(({ href, section }) => {
+      const targetSection = document.querySelector(section);
+      if (!targetSection) return null;
+
       return ScrollTrigger.create({
-        trigger: section,
+        trigger: targetSection,
         start: "top center",
         end: "bottom center",
         onToggle: (self) => self.isActive && setActiveHref(href),
       });
     });
-    return () => triggers.forEach((t) => t?.kill());
+
+    return () => triggers.forEach((trigger) => trigger?.kill());
   }, []);
 
   useEffect(() => {
@@ -76,7 +79,7 @@ export function StickyNav() {
       )}
     >
       <div className="mx-auto flex h-full max-w-7xl items-center justify-between px-6 md:px-10">
-        <Link href="#home">
+        <Link href="/" aria-label="WeDrip home">
           <Wordmark />
         </Link>
 
@@ -87,9 +90,7 @@ export function StickyNav() {
               href={link.href}
               className={cn(
                 "relative text-sm font-medium uppercase tracking-wide text-brand-black/70 transition-colors after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:bg-brand-yellow after:transition-all after:duration-300 hover:text-brand-black hover:after:w-full",
-                activeHref === link.href
-                  ? "text-brand-black after:w-full"
-                  : "after:w-0"
+                activeHref === link.href ? "text-brand-black after:w-full" : "after:w-0"
               )}
             >
               {link.label}
@@ -112,6 +113,8 @@ export function StickyNav() {
             type="button"
             onClick={() => setMobileOpen(true)}
             aria-label="Open menu"
+            aria-expanded={mobileOpen}
+            aria-controls="mobile-navigation"
             className="p-2 text-brand-black md:hidden"
           >
             <Menu className="h-6 w-6" />
@@ -120,7 +123,13 @@ export function StickyNav() {
       </div>
 
       {mobileOpen && (
-        <div className="fixed inset-0 z-[60] flex flex-col bg-brand-black md:hidden">
+        <div
+          id="mobile-navigation"
+          className="fixed inset-0 z-[60] flex flex-col bg-brand-black md:hidden"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Mobile navigation"
+        >
           <div className="flex h-16 items-center justify-between px-6">
             <Wordmark light />
             <button

@@ -182,12 +182,16 @@ export function HowItWorks() {
     <section
       ref={sectionRef}
       id="how-it-works"
+      aria-labelledby="how-it-works-heading"
       className="relative z-10 bg-brand-black px-6 py-24 md:py-40"
     >
       <div className="mx-auto max-w-7xl lg:grid lg:min-h-[70vh] lg:grid-cols-[35%_65%] lg:gap-16">
         {/* Left column — Problem narrative */}
         <div ref={leftColRef} className="flex flex-col justify-center mb-16 lg:mb-0 lg:flex">
-          <p className="max-w-[420px] font-sans text-[30px] font-bold uppercase leading-[1.2] tracking-tight-display text-white sm:text-[32px] lg:text-[30px] xl:text-[42px] 2xl:text-[52px]">
+          <h2
+            id="how-it-works-heading"
+            className="max-w-[420px] font-sans text-[30px] font-bold uppercase leading-[1.2] tracking-tight-display text-white sm:text-[32px] lg:text-[30px] xl:text-[42px] 2xl:text-[52px]"
+          >
             {STORY_LINES.map((line, i) => (
               <span
                 key={i}
@@ -199,7 +203,7 @@ export function HowItWorks() {
                 {line}
               </span>
             ))}
-          </p>
+          </h2>
         </div>
 
         {/* Right column — Process steps */}

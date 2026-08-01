@@ -24,13 +24,17 @@ export function ProfitCalculator() {
   return (
     <section
       id="calculator"
+      aria-labelledby="calculator-heading"
       className="bg-brand-black px-6 py-16 md:py-[120px]"
     >
       <div className="mx-auto max-w-3xl text-center">
         <span className="font-mono text-xs uppercase tracking-wide text-brand-yellow">
           What You Keep
         </span>
-        <h2 className="mt-2 text-[32px] font-bold uppercase leading-[1.05] tracking-tight-display text-white md:text-[44px]">
+        <h2
+          id="calculator-heading"
+          className="mt-2 text-[32px] font-bold uppercase leading-[1.05] tracking-tight-display text-white md:text-[44px]"
+        >
           Run the numbers on Full Service.
         </h2>
         <p className="mt-4 text-base text-white/60 md:text-lg">
@@ -42,14 +46,11 @@ export function ProfitCalculator() {
         inView
         className="mx-auto mt-16 grid max-w-5xl gap-12 lg:grid-cols-2 lg:gap-16"
       >
-        {/* Controls */}
         <div className="space-y-10">
           <div>
             <div className="flex items-baseline justify-between font-mono text-xs uppercase tracking-wide text-white/70">
               <span>Items sold / month</span>
-              <span className="text-2xl font-bold text-brand-yellow">
-                {itemsSold}
-              </span>
+              <span className="text-2xl font-bold text-brand-yellow">{itemsSold}</span>
             </div>
             <Slider
               className={`mt-5 ${sliderClassName}`}
@@ -57,7 +58,7 @@ export function ProfitCalculator() {
               max={500}
               step={10}
               value={[itemsSold]}
-              onValueChange={(v) => setItemsSold(v[0])}
+              onValueChange={(value) => setItemsSold(value[0])}
             />
             <div className="mt-2 flex justify-between font-mono text-xs text-white/40">
               <span>10</span>
@@ -68,9 +69,7 @@ export function ProfitCalculator() {
           <div>
             <div className="flex items-baseline justify-between font-mono text-xs uppercase tracking-wide text-white/70">
               <span>Sale price / item</span>
-              <span className="text-2xl font-bold text-brand-yellow">
-                ₹{salePrice}
-              </span>
+              <span className="text-2xl font-bold text-brand-yellow">₹{salePrice}</span>
             </div>
             <Slider
               className={`mt-5 ${sliderClassName}`}
@@ -78,7 +77,7 @@ export function ProfitCalculator() {
               max={1500}
               step={50}
               value={[salePrice]}
-              onValueChange={(v) => setSalePrice(v[0])}
+              onValueChange={(value) => setSalePrice(value[0])}
             />
             <div className="mt-2 flex justify-between font-mono text-xs text-white/40">
               <span>₹400</span>
@@ -96,22 +95,23 @@ export function ProfitCalculator() {
                 type="number"
                 min={0}
                 value={productionCost}
-                onChange={(e) =>
-                  setProductionCost(Number(e.target.value) || 0)
-                }
+                onChange={(event) => setProductionCost(Number(event.target.value) || 0)}
                 className="h-auto border-0 bg-transparent p-0 font-mono text-2xl text-brand-yellow shadow-none focus-visible:ring-0 dark:bg-transparent"
               />
             </div>
           </div>
         </div>
 
-        {/* Output */}
         <div className="border border-white/10 bg-white/[0.02] p-8 md:p-10">
           <p className="font-mono text-xs uppercase tracking-wide text-white/60">
             Your monthly profit
           </p>
           <p className="mt-2 text-[44px] font-bold leading-none text-white md:text-[64px]">
-            ₹<NumberTicker value={monthlyProfit} className="text-[44px] font-bold leading-none text-white md:text-[64px]" />
+            ₹
+            <NumberTicker
+              value={monthlyProfit}
+              className="text-[44px] font-bold leading-none text-white md:text-[64px]"
+            />
           </p>
 
           <div className="my-8 h-px bg-white/10" />
@@ -122,7 +122,11 @@ export function ProfitCalculator() {
                 WeDrip&apos;s share (20%)
               </p>
               <p className="mt-2 text-2xl font-bold text-brand-yellow md:text-3xl">
-                ₹<NumberTicker value={ourShare} className="text-2xl font-bold text-brand-yellow md:text-3xl" />
+                ₹
+                <NumberTicker
+                  value={ourShare}
+                  className="text-2xl font-bold text-brand-yellow md:text-3xl"
+                />
               </p>
             </div>
             <div>
@@ -130,15 +134,20 @@ export function ProfitCalculator() {
                 Annual profit (your share)
               </p>
               <p className="mt-2 text-2xl font-bold text-white md:text-3xl">
-                ₹<NumberTicker value={annualYour} className="text-2xl font-bold text-white md:text-3xl" />
+                ₹
+                <NumberTicker
+                  value={annualYour}
+                  className="text-2xl font-bold text-white md:text-3xl"
+                />
               </p>
             </div>
           </div>
 
           <div className="mt-8 border-t border-brand-yellow pt-4">
             <p className="font-mono text-xs uppercase tracking-wide text-white/50">
-              Year 1 total — you keep ₹<NumberTicker value={annualYour} className="text-white/50" /> · we
-              take ₹<NumberTicker value={annualOurs} className="text-white/50" />
+              Year 1 total: you keep ₹
+              <NumberTicker value={annualYour} className="text-white/50" /> and we take ₹
+              <NumberTicker value={annualOurs} className="text-white/50" />
             </p>
           </div>
         </div>

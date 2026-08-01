@@ -91,6 +91,7 @@ export function WhatWeHandle() {
   return (
     <section
       id="what-we-handle"
+      aria-labelledby="what-we-handle-heading"
       className="bg-brand-off-white py-16 md:py-[120px]"
     >
       <div className="mx-auto max-w-7xl px-6 md:px-10">
@@ -101,7 +102,7 @@ export function WhatWeHandle() {
           </span>
         </div>
 
-        <h2 className="mt-2 max-w-[720px] font-sans text-[32px] font-bold uppercase leading-[1.05] tracking-tight-display text-brand-black md:text-[52px]">
+        <h2 id="what-we-handle-heading" className="mt-2 max-w-[720px] font-sans text-[32px] font-bold uppercase leading-[1.05] tracking-tight-display text-brand-black md:text-[52px]">
           Everything between the idea and the sale.
         </h2>
 

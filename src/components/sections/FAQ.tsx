@@ -6,7 +6,7 @@ import {
 } from "@/components/ui/accordion";
 import { BlurFade } from "@/components/ui/blur-fade";
 
-const FAQS = [
+export const FAQS = [
   {
     question: "How long until my merch is live?",
     answer:
@@ -46,12 +46,19 @@ const FAQS = [
 
 export function FAQ() {
   return (
-    <section id="faq" className="bg-brand-off-white px-6 py-16 md:py-[120px]">
+    <section
+      id="faq"
+      aria-labelledby="faq-heading"
+      className="bg-brand-off-white px-6 py-16 md:py-[120px]"
+    >
       <div className="mx-auto max-w-2xl">
         <span className="font-mono text-xs uppercase tracking-wide text-brand-yellow">
           FAQ
         </span>
-        <h2 className="mt-2 text-[28px] font-bold uppercase leading-[1.1] tracking-tight-display text-brand-black md:text-[44px]">
+        <h2
+          id="faq-heading"
+          className="mt-2 text-[28px] font-bold uppercase leading-[1.1] tracking-tight-display text-brand-black md:text-[44px]"
+        >
           What you&apos;re probably wondering.
         </h2>
 

@@ -26,15 +26,14 @@ type Package = {
 const PACKAGES: Package[] = [
   {
     tag: "LOW-COMMITMENT START",
-    priceMain: "₹5,000 – ₹8,000",
+    priceMain: "₹5,000 - ₹8,000",
     subPrice: "one-time fee · production billed separately",
-    description:
-      "A 50-piece limited drop with 3–4 custom designs. Sell out fast, prove the demand.",
+    description: "A 50-piece limited drop with 3-4 custom designs. Sell out fast, prove the demand.",
     bullets: [
-      "3–4 custom designs",
+      "3-4 custom designs",
       "50-piece exclusive run",
       "Store setup for the drop",
-      "Drop & scarcity strategy",
+      "Drop and scarcity strategy",
     ],
     ctaLabel: "Start with a drop",
     ctaHref: "/apply?package=exclusive-drop",
@@ -101,18 +100,21 @@ export function Packages() {
   );
 
   return (
-    <section id="packages" className="bg-brand-off-white px-6 py-16 md:py-[120px]">
+    <section id="packages" aria-labelledby="packages-heading" className="bg-brand-off-white px-6 py-16 md:py-[120px]">
       <div className="mx-auto max-w-7xl">
         <div className="mx-auto max-w-2xl text-center">
           <span className="font-mono text-xs uppercase tracking-wide text-brand-yellow">
             Packages
           </span>
-          <h2 className="mt-2 text-[32px] font-bold uppercase leading-[1.05] tracking-tight-display text-brand-black md:text-[52px]">
+          <h2
+            id="packages-heading"
+            className="mt-2 text-[32px] font-bold uppercase leading-[1.05] tracking-tight-display text-brand-black md:text-[52px]"
+          >
             Three ways to start.
           </h2>
           <p className="mx-auto mt-4 max-w-[520px] text-base text-brand-gray-text md:text-lg">
-            Pick the entry point that fits your scale. Upgrade later —
-            we&apos;ll knock 10% off.
+            Pick the entry point that fits your scale. Upgrade later and we&apos;ll knock
+            10% off.
           </p>
         </div>
 
@@ -174,10 +176,7 @@ export function Packages() {
 
               <ul className="space-y-3">
                 {pkg.bullets.map((bullet) => (
-                  <li
-                    key={bullet}
-                    className="flex items-start gap-2 text-sm text-brand-black"
-                  >
+                  <li key={bullet} className="flex items-start gap-2 text-sm text-brand-black">
                     <Check className="mt-0.5 h-4 w-4 flex-shrink-0" />
                     {bullet}
                   </li>

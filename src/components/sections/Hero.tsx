@@ -38,11 +38,7 @@ export function Hero() {
         stagger: 0.08,
         ease: "power2.out",
       })
-        .to(
-          sublineRef.current,
-          { opacity: 1, y: 0, duration: 0.3 },
-          "+=0.3"
-        )
+        .to(sublineRef.current, { opacity: 1, y: 0, duration: 0.3 }, "+=0.3")
         .to(ctaRowRef.current?.children ?? [], {
           opacity: 1,
           scale: 1,
@@ -78,11 +74,7 @@ export function Hero() {
       id="home"
       className="relative flex min-h-screen flex-col overflow-x-clip bg-brand-off-white"
     >
-      <DotPattern
-        className="text-brand-yellow opacity-[0.04]"
-        width={20}
-        height={20}
-      />
+      <DotPattern className="text-brand-yellow opacity-[0.04]" width={20} height={20} />
 
       <div className="hero-shell relative z-10 mx-auto flex w-full max-w-7xl flex-1 flex-col items-center justify-center px-4 pb-4 pt-[4rem] text-center sm:px-6 sm:pb-6 sm:pt-[5rem] lg:px-8 lg:pb-1 lg:pt-[2.75rem] xl:pt-[3.25rem]">
         <div className="flex flex-col items-center">
@@ -102,8 +94,8 @@ export function Hero() {
             ref={sublineRef}
             className="mt-4 max-w-[34rem] text-sm leading-relaxed text-brand-gray-text sm:mt-5 sm:text-base md:text-lg"
           >
-            India&apos;s merch agency for creators. We design it, build the
-            store, handle production. You just show up.
+            India&apos;s merch agency for creators. We design it, build the store, handle
+            production. You just show up.
           </p>
 
           <div
@@ -121,7 +113,7 @@ export function Hero() {
             </Magnetic>
             <Magnetic>
               <Link
-                href="#packages"
+                href="/#packages"
                 className="flex w-full items-center justify-center rounded-[4px] border border-brand-black bg-transparent px-7 py-3.5 text-sm font-bold uppercase tracking-wide text-brand-black transition-colors hover:bg-brand-black hover:text-white sm:min-w-[190px] sm:w-auto sm:px-8 sm:py-4 sm:text-base"
               >
                 See Packages
@@ -135,10 +127,7 @@ export function Hero() {
         </div>
       </div>
 
-      <Marquee
-        className="relative z-10 h-12 items-center bg-brand-black [--duration:30s]"
-        repeat={6}
-      >
+      <Marquee className="relative z-10 h-12 items-center bg-brand-black [--duration:30s]" repeat={6}>
         <span className="mx-4 whitespace-nowrap font-mono text-sm uppercase tracking-wide text-brand-yellow">
           {MARQUEE_TEXT}
         </span>

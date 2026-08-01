@@ -3,22 +3,23 @@ import { ArrowRight, MessageCircle, AtSign, Mail } from "lucide-react";
 import { Magnetic } from "@/components/Magnetic";
 import { BlurFade } from "@/components/ui/blur-fade";
 import { AnimatedShinyText } from "@/components/ui/animated-shiny-text";
-
-const WHATSAPP_URL =
-  "https://wa.me/917550022162";
+import { siteConfig } from "@/lib/site";
 
 const SITEMAP_LINKS = [
-  { href: "#home", label: "Home" },
-  { href: "#how-it-works", label: "How it works" },
-  { href: "#packages", label: "Packages" },
+  { href: "/", label: "Home" },
+  { href: "/#how-it-works", label: "How it works" },
+  { href: "/#packages", label: "Packages" },
   { href: "/apply", label: "Apply" },
 ];
 
 export function FinalCta() {
   return (
-    <section className="bg-brand-black">
+    <section aria-labelledby="final-cta-heading" className="bg-brand-black">
       <div className="px-6 pb-24 pt-32 text-center md:pb-32 md:pt-40">
-        <h2 className="text-[48px] font-bold uppercase leading-[0.95] tracking-tight-display min-[460px]:text-[64px] md:text-[100px] lg:text-[120px]">
+        <h2
+          id="final-cta-heading"
+          className="text-[48px] font-bold uppercase leading-[0.95] tracking-tight-display min-[460px]:text-[64px] md:text-[100px] lg:text-[120px]"
+        >
           <AnimatedShinyText className="mx-0 max-w-none text-brand-yellow via-white/90">
             Ready to drip?
           </AnimatedShinyText>
@@ -45,7 +46,7 @@ export function FinalCta() {
                 WeDrip
                 <span
                   aria-hidden="true"
-                  className="ml-1 text-2xl leading-none text-brand-yellow relative -top-[3px]"
+                  className="relative -top-[3px] ml-1 text-2xl leading-none text-brand-yellow"
                 >
                   &bull;
                 </span>
@@ -64,7 +65,7 @@ export function FinalCta() {
               <div className="mt-4 space-y-4">
                 <Magnetic>
                   <a
-                    href={WHATSAPP_URL}
+                    href={siteConfig.whatsapp}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-3 text-white transition-colors hover:text-brand-yellow"
@@ -80,7 +81,7 @@ export function FinalCta() {
                 </Magnetic>
                 <Magnetic>
                   <a
-                    href="https://www.instagram.com/wedrip.merch/?utm_source=ig_web_button_share_sheet"
+                    href={siteConfig.instagram}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-3 text-white transition-colors hover:text-brand-yellow"
@@ -89,21 +90,21 @@ export function FinalCta() {
                     <span>
                       Instagram
                       <span className="ml-2 font-mono text-sm text-white/70">
-                        @wedrip
+                        {siteConfig.instagramHandle}
                       </span>
                     </span>
                   </a>
                 </Magnetic>
                 <Magnetic>
                   <a
-                    href="mailto:we.drip.cma@gmail.com"
+                    href={`mailto:${siteConfig.email}`}
                     className="flex items-center gap-3 text-white transition-colors hover:text-brand-yellow"
                   >
                     <Mail className="h-4 w-4" />
                     <span>
                       Email
                       <span className="ml-2 font-mono text-sm text-white/70">
-                        we.drip.cma@gmail.com
+                        {siteConfig.email}
                       </span>
                     </span>
                   </a>
@@ -133,7 +134,7 @@ export function FinalCta() {
         </div>
 
         <div className="mx-auto mt-12 flex max-w-7xl flex-col items-center justify-between gap-3 border-t border-white/10 pt-8 font-mono text-xs uppercase tracking-wide text-white/40 sm:flex-row">
-          <span>© 2026 WeDrip · India&apos;s merch agency for creators.</span>
+          <span>&copy; 2026 WeDrip &middot; India&apos;s merch agency for creators.</span>
           <span>Made in India</span>
         </div>
       </div>

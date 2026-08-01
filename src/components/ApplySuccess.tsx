@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { Check, MessageCircle } from "lucide-react";
 import { Magnetic } from "@/components/Magnetic";
+import { siteConfig } from "@/lib/site";
 
-const WHATSAPP_URL =
-  "https://wa.me/917550022162?text=Hi%20WeDrip%2C%20I'm%20interested.";
+const WHATSAPP_URL = `${siteConfig.whatsapp}?text=Hi%20WeDrip%2C%20I'm%20interested.`;
 
 export function ApplySuccess() {
   return (
@@ -22,12 +22,12 @@ export function ApplySuccess() {
           <br />
           Meanwhile, follow along at{" "}
           <a
-            href="https://instagram.com/wedripout"
+            href={siteConfig.instagram}
             target="_blank"
             rel="noopener noreferrer"
             className="font-bold text-brand-black underline underline-offset-2"
           >
-            @wedripout
+            {siteConfig.instagramHandle}
           </a>
         </p>
 

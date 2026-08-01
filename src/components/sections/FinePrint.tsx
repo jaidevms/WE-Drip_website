@@ -27,7 +27,7 @@ const ITEMS = [
 
 export function FinePrint() {
   return (
-    <section className="border-y border-brand-black bg-brand-off-white px-6 py-16">
+    <section aria-label="WeDrip service commitments" className="border-y border-brand-black bg-brand-off-white px-6 py-16">
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
         {ITEMS.map((item, index) => {
           const Icon = item.icon;

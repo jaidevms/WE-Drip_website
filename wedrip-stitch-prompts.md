@@ -642,7 +642,7 @@ MIDDLE COLUMN — Contact methods:
 - 16px gap.
 - Three rows, each with a Lucide icon (16px, white) on the left and text on the right (Geist Regular, 14px, white, with the actual contact info in Geist Mono on a second line below in white opacity 70%).
   - WhatsApp icon — "WhatsApp" / "+91 75500 22162"
-  - Instagram icon — "Instagram" / "@wedripout"
+  - Instagram icon — "Instagram" / "@wedrip.merch"
   - Email icon — "Email" / "we.drip.cma@gmail.com"
 - 12px gap between rows.
 
@@ -772,7 +772,7 @@ CONTENT (centered, top to bottom):
 
 - 8px gap.
 
-- Continuation: "Meanwhile, follow along at" then a link "@wedripout" (Geist Bold, black, underlined). All inline as one sentence.
+- Continuation: "Meanwhile, follow along at" then a link "@wedrip.merch" (Geist Bold, black, underlined). All inline as one sentence.
 
 - 48px gap.
 

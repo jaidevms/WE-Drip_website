@@ -14,7 +14,7 @@
 - **Animations:** GSAP + ScrollTrigger (scroll behaviors), Magic UI + ReactBits (component-level micro-interactions)
 - **Forms:** Custom — Next.js API route → Supabase
 - **Hosting:** Vercel (frontend), Supabase (database), Render (if any extra backend services needed later)
-- **Domain:** None yet — deploys to `wedrip.vercel.app`
+- **Domain:** Production on `https://www.wedrip.in`
 
 ### Brand Tokens
 ```
@@ -474,7 +474,7 @@ annual_ours = our_share * 12
   - Left: WeDrip wordmark + tagline (`India's merch agency for creators.`)
   - Middle: three contact methods, each a row with icon + label:
     - WhatsApp → `+91 75500 22162` (click → opens `wa.me/917550022162?text=Hi%20WeDrip,%20I'm%20interested.`)
-    - Instagram → `@wedripout` (click → opens IG profile)
+    - Instagram → `@wedrip.merch` (click → opens IG profile)
     - Email → `we.drip.cma@gmail.com` (click → mailto)
   - Right: small sitemap (Home, How it works, Packages, Apply).
 - Bottom strip: `© 2026 WeDrip · India's merch agency for creators.`
@@ -526,7 +526,7 @@ Capture serious leads with enough info to qualify them and start a real conversa
 - POST to `/api/apply` with all field values.
 - On success: replace form with a success state:
   > **Got it.**
-  > We'll be in touch on WhatsApp within 24 hours. Meanwhile, follow us [@wedripout](https://instagram.com/wedripout).
+  > We'll be in touch on WhatsApp within 24 hours. Meanwhile, follow us [@wedrip.merch](https://www.instagram.com/wedrip.merch/).
 - On error: inline red banner above the submit button — `Something went wrong. Try again, or message us directly on WhatsApp.`
 
 ### Components
