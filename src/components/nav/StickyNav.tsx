@@ -70,6 +70,7 @@ export function StickyNav() {
   }, [mobileOpen]);
 
   return (
+    <>
     <header
       className={cn(
         "fixed inset-x-0 top-0 z-50 h-16 transition-colors duration-300 md:h-[72px]",
@@ -121,11 +122,12 @@ export function StickyNav() {
           </button>
         </div>
       </div>
+    </header>
 
       {mobileOpen && (
         <div
           id="mobile-navigation"
-          className="fixed inset-0 z-[60] flex flex-col bg-brand-black md:hidden"
+          className="fixed inset-0 z-[60] flex h-[100dvh] w-full flex-col bg-brand-black md:hidden"
           role="dialog"
           aria-modal="true"
           aria-label="Mobile navigation"
@@ -171,6 +173,6 @@ export function StickyNav() {
           </div>
         </div>
       )}
-    </header>
+    </>
   );
 }
